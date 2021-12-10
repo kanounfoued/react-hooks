@@ -30,7 +30,11 @@ export default function NextPrevious({
 
   return (
     <div className="">
-      <button disabled={disablePrevious} onClick={clickPrevious}>
+      <button
+        data-testid="next"
+        disabled={disablePrevious}
+        onClick={clickPrevious}
+      >
         Previous
       </button>
       <button disabled={disableNext} onClick={clickNext}>
