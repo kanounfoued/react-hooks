@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 /**
  *
  * @param {items} Array
- * @param {index} number => -1 if the first one it not selected yet.
+ * @param {index} number
  */
-export default function useNextPrevious({ items = [], index = 0 }) {
+export default function useNextPrevious(items = [], index = 0) {
   const [disableNext, setDisableNext] = useState(true);
   const [disablePrevious, setDisablePrevious] = useState(true);
 
