@@ -19,23 +19,6 @@ export default function useNextPrevious({ items = [], index = 0 }) {
   }, [index, items]);
 
   /**
-   * Search for an element inside a list
-   * @param {*} itemId
-   * @param {*} callback passing a callback, to make the search customizable dependent on your data
-   */
-  function findItemIndex(itemId = "", callback = null) {
-    if (isItemsEmpty()) {
-      return -1;
-    }
-
-    if (callback) {
-      return items.findIndex(callback);
-    }
-
-    return items.findIndex((item) => item._id === itemId);
-  }
-
-  /**
    * Check if the list of items is empty
    */
   function isItemsEmpty() {
@@ -46,14 +29,14 @@ export default function useNextPrevious({ items = [], index = 0 }) {
    * Check if there exists a previous item
    */
   function isPreviousEnabled() {
-    return index > 0;
+    return index > 0 && index < items.length;
   }
 
   /**
    * Check if there exists a next item
    */
   function isNextEnabled() {
-    return index < items.length - 1;
+    return index < items.length - 1 && index >= 0;
   }
 
   /**
@@ -61,7 +44,7 @@ export default function useNextPrevious({ items = [], index = 0 }) {
    */
   function getPrevious() {
     if (!isPreviousEnabled()) {
-      setDisablePrevious(true);
+      return null;
     }
 
     return items[index - 1];
@@ -72,7 +55,7 @@ export default function useNextPrevious({ items = [], index = 0 }) {
    */
   function getNext() {
     if (!isNextEnabled()) {
-      setDisableNext(true);
+      return null;
     }
 
     return items[index + 1];
@@ -81,7 +64,6 @@ export default function useNextPrevious({ items = [], index = 0 }) {
   return {
     getNext,
     getPrevious,
-    findItemIndex,
     disableNext,
     disablePrevious,
   };
