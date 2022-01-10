@@ -1,6 +1,10 @@
 import { useState } from "react";
 import NextPrevious from "../component/NextPrevious";
 
+// FormHook
+import useFormHook from "../Hooks/useFormHook";
+import CustomInput from "../component/CustomInput";
+
 import "./App.css";
 
 const data = [
@@ -48,17 +52,55 @@ function App() {
     setIndex(ind);
   }
 
+  // UseForm Hooks section
+
+  const { registerField } = useFormHook();
+
+  function onClickButton(e) {
+    e.preventDefault();
+  }
+
+  // UseForm Hooks section
+
   return (
-    <div className="App">
-      <NextPrevious
-        items={state}
-        index={index}
-        handleCurrentElementChange={handleCurrentElementChange}
-        handleIndexChange={handleIndexChange}
-      />
-      <div>{index}</div>
-      <div>{currentElement.title}</div>
-    </div>
+    <>
+      <div className="App">
+        <NextPrevious
+          items={state}
+          index={index}
+          handleCurrentElementChange={handleCurrentElementChange}
+          handleIndexChange={handleIndexChange}
+        />
+        <div>{index}</div>
+        <div>{currentElement.title}</div>
+      </div>
+
+      <div className="App">
+        <form>
+          <CustomInput
+            {...registerField("family-name", {
+              label: "Family name",
+              name: "family-name",
+              value: "k",
+              required: true,
+              validate: function (value) {
+                if (/\d+/.test(value)) {
+                  console.log("The value should not be number");
+                }
+              },
+            })}
+          />
+          <CustomInput
+            {...registerField("name", {
+              label: "Name",
+              name: "name",
+            })}
+          />
+
+          <button onClick={onClickButton}>click</button>
+        </form>
+      </div>
+    </>
   );
 }
 

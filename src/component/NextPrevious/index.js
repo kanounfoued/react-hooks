@@ -12,7 +12,7 @@ export default function NextPrevious({
     disablePrevious,
     getNext,
     getPrevious,
-  } = useNextPrevious({ items, index });
+  } = useNextPrevious(items, index);
 
   function clickNext() {
     const item = getNext();
