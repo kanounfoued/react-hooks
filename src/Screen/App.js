@@ -5,6 +5,8 @@ import NextPrevious from "../component/NextPrevious";
 import useFormHook from "../Hooks/useFormHook";
 import CustomInput from "../component/CustomInput";
 
+import { CustomAxios } from "../Services/axios.service";
+
 import "./App.css";
 
 const data = [
@@ -60,6 +62,25 @@ function App() {
     e.preventDefault();
   }
 
+  function onSuccess(response) {
+    console.log(response);
+  }
+
+  function onFail(error) {
+    console.log(error.message);
+  }
+
+  async function onFetch() {
+    await CustomAxios(
+      "/posts",
+      {
+        method: "GET",
+      },
+      onSuccess,
+      onFail
+    );
+  }
+
   // UseForm Hooks section
 
   return (
@@ -100,6 +121,8 @@ function App() {
           <button onClick={onClickButton}>click</button>
         </form>
       </div>
+
+      <button onClick={onFetch}>fetch</button>
     </>
   );
 }
