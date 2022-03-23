@@ -1,5 +1,30 @@
 import React from "react";
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * Recommended to use "react-error-boundary"
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
