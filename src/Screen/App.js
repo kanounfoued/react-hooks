@@ -4,6 +4,7 @@ import NextPrevious from "../component/NextPrevious";
 // FormHook
 import useFormHook from "../Hooks/useFormHook";
 import CustomInput from "../component/CustomInput";
+import DisplayList from "../component/List/DisplayList";
 
 import { CustomAxios } from "../Services/axios.service";
 
@@ -123,6 +124,10 @@ function App() {
       </div>
 
       <button onClick={onFetch}>fetch</button>
+      <br />
+      <br />
+
+      <DisplayList />
     </>
   );
 }
