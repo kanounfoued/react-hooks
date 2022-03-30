@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NextPrevious from "../../component/NextPrevious";
 
@@ -7,6 +6,7 @@ import NextPrevious from "../../component/NextPrevious";
 import useFormHook from "../../Hooks/useFormHook";
 import CustomInput from "../../component/CustomInput";
 import DisplayList from "../../component/List/DisplayList";
+import DisplayListReact from "../../component/List/DisplayListReact";
 
 import { CustomAxios } from "../../Services/axios.service";
 
@@ -127,7 +127,8 @@ export default function Home() {
       <br />
       <br />
 
-      <DisplayList />
+      {/* <DisplayList /> */}
+      <DisplayListReact />
     </>
   );
 }
